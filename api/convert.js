@@ -17,12 +17,13 @@ module.exports = async (req, res) => {
         const pair = [baseName, targetName].sort().join('-')
         
         if (refresh)
-            await cache.deletePairs(pair)
+            await cache.deleteConverts(pair)
         
-        const cached = await cache.readPairs(pair)
+        const cached = await cache.readConverts(pair)
         
         let base
         let target
+        let source = 'remote'
         
         if (cached) {
             
@@ -30,6 +31,7 @@ module.exports = async (req, res) => {
             
             base = cached.rates[baseName]
             target = cached.rates[targetName]
+            source = 'cache'
             
         } else {
             
@@ -38,7 +40,7 @@ module.exports = async (req, res) => {
             
             console.info('convert: read from remote, caching')
             
-            await cache.writePairs({
+            await cache.writeConverts({
                 timestamp: Date.now(),
                 data: {
                     rates: data.rates,
@@ -56,6 +58,7 @@ module.exports = async (req, res) => {
             [baseName]: base,
             [targetName]: target,
             result: value * exchangeRate,
+            source,
         }
         
         res.status(200).json(data)
