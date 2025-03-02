@@ -13,7 +13,7 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "@vercel/kv": "^2.0.0",
-    "next": "^14.2.4"
+    "@vercel/kv": "^3.0.0",
+    "next": "^15.2.0"
   }
 }
