@@ -1,10 +1,10 @@
-import * as cache from '../lib/cache'
-import openExchangeRatesApi from '../lib/openExchangeRatesApi'
-import { ensureValidCurrencyRate } from '../lib/utils'
+import * as cache from '../lib/cache.js'
+import openExchangeRatesApi from '../lib/openExchangeRatesApi.js'
+import { ensureValidCurrencyRate } from '../lib/utils.js'
 
 const cacheEnabled = true
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
     
     try {
         

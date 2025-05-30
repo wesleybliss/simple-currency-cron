@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "vercel dev --listen 3001",
+    "start": "vercel dev --listen 3002",
     "deploy": "vercel --prod",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "adb:proxy": "adb reverse tcp:3000 tcp:3000"
+    "adb:proxy": "adb reverse tcp:3002 tcp:3002"
   },
   "keywords": [],
   "author": "",

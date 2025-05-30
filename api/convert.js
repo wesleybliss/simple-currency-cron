@@ -1,7 +1,7 @@
-import * as cache from '../lib/cache'
-import openExchangeRatesApi from '../lib/openExchangeRatesApi'
+import * as cache from '../lib/cache.js'
+import openExchangeRatesApi from '../lib/openExchangeRatesApi.js'
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
     
     try {
         

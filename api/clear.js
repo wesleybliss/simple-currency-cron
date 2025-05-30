@@ -1,8 +1,8 @@
-import * as kv from '../lib/kv'
+import * as kv from '../lib/kv.js'
 
 const allowedKeys = ['currencies', 'pairs']
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
     
     try {
         

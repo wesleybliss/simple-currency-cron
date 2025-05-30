@@ -1,6 +1,6 @@
-const pkg = require('../package.json')
+import pkg from '../package.json'
 
-module.exports = (req, res) => {
+export default (req, res) => {
     
     res.status(200).json({
         name: pkg.name,
