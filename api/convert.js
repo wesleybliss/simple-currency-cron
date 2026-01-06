@@ -19,7 +19,7 @@ export default async (req, res) => {
         if (refresh)
             await cache.deleteConverts(pair)
         
-        const cached = await cache.readConverts(pair)
+        const cached = (await cache.readConverts(pair))?.data
         
         let base
         let target
@@ -64,6 +64,19 @@ export default async (req, res) => {
         res.status(200).json(data)
         
     } catch (e) {
+        
+        try {
+            const baseName = req.query.from.toUpperCase()
+            const targetName = req.query.to.toUpperCase()
+            const pair = [baseName, targetName].sort().join('-')
+            const cached = await cache.readConverts(pair)
+            
+            console.log('/convert cached rates', cached)
+        } catch (e) {
+            console.error('/convert failed to read cached rates', e)
+        }
+        
+        console.error('/convert failed', e)
         
         res.status(500).json({
             error: e.message,
